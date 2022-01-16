@@ -1,0 +1,78 @@
+const edata = {
+  eHomes: [
+    {
+      name: "Full House",
+      category: "eHomes",
+      slug: "full-house",
+      image: "https://i.ibb.co/5rDfLMC/ehomes1.jpg",
+      pets: "Pets are not Allowed in this House",
+      rating: [4.5, " stars ", " 10 Reviews"],
+      description: "A cozy and wonderful home",
+      price: 5000,
+    },
+
+    {
+      name: "3rd Home",
+      category: "eHomes",
+      slug: "third-home",
+      image: "https://i.ibb.co/hsk9zPJ/ehomes3.jpg",
+      pets: "Pets are not Allowed in this House",
+      rating: 4.5,
+      description: "A cozy and wonderful home",
+      price: 7000,
+    },
+    {
+      name: "2nd Home",
+      slug: "second-home",
+      category: "eHomes",
+      image: "https://i.ibb.co/fkdbSxX/ehomes2.jpg",
+      pets: "Pets are not Allowed in this House",
+      rating: 4.5,
+      description: "A cozy and wonderful home",
+      price: 10000,
+    },
+    {
+      name: "1st Home Allowing Pets",
+      category: "hPets",
+      image: "https://i.ibb.co/kcPtkdr/p1.jpg",
+      rating: 4.8,
+      description: "A cozy and wonderful home for you and your pets",
+    },
+    {
+      name: "2nd Home Allowing Pets",
+      category: "hPets",
+      image: "https://i.ibb.co/c1SdWKj/p2.jpg",
+      rating: 4.8,
+      description: "A cozy and wonderful home for you and your pets",
+    },
+    {
+      name: "3rd Home Allowing Pets",
+      category: "hPets",
+      image: "https://i.ibb.co/TkghsCq/p3.jpg",
+      rating: 4.8,
+      description: "A cozy and wonderful home for you and your pets",
+    },
+    {
+      name: "1st Unique Places to Stay",
+      category: "uPlace",
+      image: "https://i.ibb.co/HrMqfZ1/uplace1.jpg",
+      rating: 4.4,
+      description: "A unique and one of a kind place to stay",
+    },
+    {
+      name: "2nd Unique Places to Stay",
+      category: "uPlace",
+      image: "https://i.ibb.co/yWFrWWD/uplace2.jpg",
+      rating: 4.4,
+      description: "A unique and one of a kind place to stay",
+    },
+    {
+      name: "3rd Unique Places to Stay",
+      category: "uPlace",
+      image: "https://i.ibb.co/bdYQjPj/uplace3.jpg",
+      rating: 4.4,
+      description: "A unique and one of a kind place to stay",
+    },
+  ],
+};
+export default edata;
