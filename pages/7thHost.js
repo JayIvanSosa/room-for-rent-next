@@ -68,7 +68,7 @@ function HostSeventh() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -103,7 +103,7 @@ function HostSeventh() {
                 <Grid
                   item
                   style={{
-                    marginTop: 80,
+                    marginTop: 40,
                     position: "absolute",
                     marginLeft: 1000,
                   }}
@@ -139,20 +139,12 @@ function HostSeventh() {
                     </div>
                   </Container>
                 </Grid>
-                <Grid
-                  item
-                  style={{
-                    marginTop: 200,
-                    position: "absolute",
-                    marginLeft: 865,
-                  }}
-                ></Grid>
 
                 <NextLink href="/8thHost" passHref>
                   <Button
                     variant="contained"
                     style={{
-                      marginTop: 600,
+                      marginTop: 560,
                       position: "absolute",
                       marginLeft: 1100,
                     }}
@@ -172,7 +164,7 @@ function HostSeventh() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

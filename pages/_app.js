@@ -67,15 +67,10 @@ function App({ Component, pageProps }) {
         </Head>
 
         <div className={`app-container ${user ? "bg-light" : ""}`}>
-          <Nav />
-          <Alert />
           {authorized && <Component {...pageProps} />}
         </div>
 
         {/* credits */}
-        <div className="text-center mt-4">
-          <p>All Rights Reserved. Room For Rent 2021-2022</p>
-        </div>
       </Provider>
     </>
   );

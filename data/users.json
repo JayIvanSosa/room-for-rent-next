@@ -1,29 +1,11 @@
 [
     {
-        "firstName": "zed",
-        "lastName": "talon",
-        "username": "kayne",
-        "hash": "$2a$10$vgntWsiJXxxEFTrriLOMq.vUk77QcO6Wu4PxyBDitifOIJw5oYEce",
-        "id": 1,
-        "dateCreated": "2022-01-15T01:19:20.541Z",
-        "dateUpdated": "2022-01-15T01:19:20.541Z"
-    },
-    {
-        "firstName": "denzel",
-        "lastName": "gg",
-        "username": "richkid",
-        "hash": "$2a$10$/J6mFBWm/rIv1GAXEMCV1ul39n.1lePY20/K45nCjlylf11RjAO4.",
-        "id": 2,
-        "dateCreated": "2022-01-15T01:22:11.505Z",
-        "dateUpdated": "2022-01-15T01:22:11.505Z"
-    },
-    {
-        "firstName": "kiel",
-        "lastName": "robin",
-        "username": "ggggg",
-        "hash": "$2a$10$fI8.ZjkLdq.J3hCtdm1vzuBBN1L.KP4bpnnhQEd/OEbRl7OGBN2CC",
-        "id": 3,
-        "dateCreated": "2022-01-16T12:22:29.818Z",
-        "dateUpdated": "2022-01-16T12:22:29.818Z"
+        "firstName": "ADMIN",
+        "lastName": "ACCOUNT",
+        "username": "ADMIN_ACCOUNT",
+        "hash": "$2a$10$L.xjDgzvWutLI1iRtTwN/uKKq0MRfPvE0gd9.hr5wRrRjY0J8mYba",
+        "id": 4,
+        "dateCreated": "2022-01-17T02:20:02.536Z",
+        "dateUpdated": "2022-01-17T02:20:02.536Z"
     }
 ]

@@ -49,7 +49,7 @@ function HostTenth() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -84,7 +84,7 @@ function HostTenth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 310,
+                    marginTop: 270,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -102,7 +102,7 @@ function HostTenth() {
                   <Button
                     variant="contained"
                     style={{
-                      marginTop: 400,
+                      marginTop: 360,
                       position: "absolute",
                       marginLeft: 1100,
                     }}
@@ -122,7 +122,7 @@ function HostTenth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

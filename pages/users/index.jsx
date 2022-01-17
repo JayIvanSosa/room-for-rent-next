@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 import { Link, Spinner } from "components";
 import { Layout } from "components/users";
 import { userService } from "services";
+import { Nav, Alert } from "components";
+import { Typography } from "@mui/material";
+import useStyles from "../../utils/style";
 
 export default Index;
 
 function Index() {
+  const classes = useStyles();
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -28,64 +32,72 @@ function Index() {
   }
 
   return (
-    <Layout>
-      <h1>Users</h1>
-      <Link href="/users/add" className="btn btn-sm btn-success mb-2">
-        Add User
-      </Link>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th style={{ width: "30%" }}>First Name</th>
-            <th style={{ width: "30%" }}>Last Name</th>
-            <th style={{ width: "30%" }}>Username</th>
-            <th style={{ width: "10%" }}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {users &&
-            users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.username}</td>
-                <td style={{ whiteSpace: "nowrap" }}>
-                  <Link
-                    href={`/users/edit/${user.id}`}
-                    className="btn btn-sm btn-primary mr-1"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => deleteUser(user.id)}
-                    className="btn btn-sm btn-danger btn-delete-user"
-                    disabled={user.isDeleting}
-                  >
-                    {user.isDeleting ? (
-                      <span className="spinner-border spinner-border-sm"></span>
-                    ) : (
-                      <span>Delete</span>
-                    )}
-                  </button>
+    <div>
+      <Nav />
+      <Alert />
+
+      <Layout>
+        <h1>Users</h1>
+        <Link href="/users/add" className="btn btn-sm btn-success mb-2">
+          Add User
+        </Link>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th style={{ width: "30%" }}>First Name</th>
+              <th style={{ width: "30%" }}>Last Name</th>
+              <th style={{ width: "30%" }}>Username</th>
+              <th style={{ width: "10%" }}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {users &&
+              users.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.firstName}</td>
+                  <td>{user.lastName}</td>
+                  <td>{user.username}</td>
+                  <td style={{ whiteSpace: "nowrap" }}>
+                    <Link
+                      href={`/users/edit/${user.id}`}
+                      className="btn btn-sm btn-primary mr-1"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => deleteUser(user.id)}
+                      className="btn btn-sm btn-danger btn-delete-user"
+                      disabled={user.isDeleting}
+                    >
+                      {user.isDeleting ? (
+                        <span className="spinner-border spinner-border-sm"></span>
+                      ) : (
+                        <span>Delete</span>
+                      )}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            {!users && (
+              <tr>
+                <td colSpan="4">
+                  <Spinner />
                 </td>
               </tr>
-            ))}
-          {!users && (
-            <tr>
-              <td colSpan="4">
-                <Spinner />
-              </td>
-            </tr>
-          )}
-          {users && !users.length && (
-            <tr>
-              <td colSpan="4" className="text-center">
-                <div className="p-2">No Users To Display</div>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </Layout>
+            )}
+            {users && !users.length && (
+              <tr>
+                <td colSpan="4" className="text-center">
+                  <div className="p-2">No Users To Display</div>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        <footer className={classes.footer} style={{ marginTop: "30vh" }}>
+          <Typography>All rights reserved. Room For Rent 2021-2022</Typography>
+        </footer>
+      </Layout>
+    </div>
   );
 }

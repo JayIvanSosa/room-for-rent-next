@@ -43,7 +43,7 @@ function HostFifth() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -89,7 +89,7 @@ function HostFifth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 1800,
                   }}
@@ -114,7 +114,7 @@ function HostFifth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

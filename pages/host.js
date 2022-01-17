@@ -10,17 +10,6 @@ import { Button } from "@mui/material";
 import sideImage from "../public/images/image3.jpg";
 import { userService } from "services";
 
-// <AppBar position="absolute" className={classes.nav}>
-// <Toolbar className={classes.grow}>
-//   <NextLink href="/" passHref>
-//     <Link>
-//       <Typography className={classes.title}>Room For Rent</Typography>
-//     </Link>
-//   </NextLink>
-//   <div className={classes.grow}></div>
-// </Toolbar>
-// </AppBar>
-
 function Host() {
   const classes = useStyles();
 
@@ -29,6 +18,16 @@ function Host() {
       <Head>
         <title>Try Hosting</title>
       </Head>
+      <AppBar position="absolute" className={classes.nav}>
+        <Toolbar className={classes.grow}>
+          <NextLink href="/" passHref>
+            <Link>
+              <Typography className={classes.title}>Room For Rent</Typography>
+            </Link>
+          </NextLink>
+          <div className={classes.grow}></div>
+        </Toolbar>
+      </AppBar>
 
       <div className={classes.splitScreen}>
         <Box sx={{ width: "100%", background: "Black" }}>
@@ -42,7 +41,7 @@ function Host() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 30,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -76,7 +75,7 @@ function Host() {
                 }}
               >
                 <Grid item>
-                  <Container style={{ marginTop: 20 }}>
+                  <Container style={{ marginTop: 10 }}>
                     <Image src={sideImage} alt="sideImage" layout="fixed" />
                   </Container>
                 </Grid>

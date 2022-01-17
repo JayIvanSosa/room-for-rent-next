@@ -51,7 +51,7 @@ function HostThird() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -177,7 +177,7 @@ function HostThird() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

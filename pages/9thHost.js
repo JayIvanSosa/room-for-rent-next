@@ -52,7 +52,7 @@ function HostNinth() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -88,7 +88,7 @@ function HostNinth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 270,
+                    marginTop: 230,
                     position: "absolute",
                     marginLeft: 720,
                   }}
@@ -98,7 +98,7 @@ function HostNinth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 310,
+                    marginTop: 270,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -115,7 +115,7 @@ function HostNinth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 400,
+                    marginTop: 360,
                     position: "absolute",
                     marginLeft: 770,
                   }}
@@ -125,7 +125,7 @@ function HostNinth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 440,
+                    marginTop: 400,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -145,7 +145,7 @@ function HostNinth() {
                   <Button
                     variant="contained"
                     style={{
-                      marginTop: 600,
+                      marginTop: 560,
                       position: "absolute",
                       marginLeft: 1100,
                     }}
@@ -166,7 +166,7 @@ function HostNinth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

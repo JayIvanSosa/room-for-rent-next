@@ -52,7 +52,7 @@ function HostSixth() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -87,7 +87,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 200,
+                    marginTop: 160,
                     position: "absolute",
                     marginLeft: 865,
                   }}
@@ -97,7 +97,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 230,
+                    marginTop: 190,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -114,7 +114,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 330,
+                    marginTop: 290,
                     position: "absolute",
                     marginLeft: 840,
                   }}
@@ -124,7 +124,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 360,
+                    marginTop: 320,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -141,7 +141,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 470,
+                    marginTop: 430,
                     position: "absolute",
                     marginLeft: 820,
                   }}
@@ -151,7 +151,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 505,
+                    marginTop: 465,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -171,7 +171,7 @@ function HostSixth() {
                   <Button
                     variant="contained"
                     style={{
-                      marginTop: 600,
+                      marginTop: 560,
                       position: "absolute",
                       marginLeft: 1100,
                     }}
@@ -193,7 +193,7 @@ function HostSixth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

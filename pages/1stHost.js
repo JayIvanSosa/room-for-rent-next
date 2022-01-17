@@ -52,7 +52,7 @@ function HostFirst() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 30,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -87,7 +87,7 @@ function HostFirst() {
                 <Grid
                   item
                   style={{
-                    marginTop: 200,
+                    marginTop: 160,
                     position: "absolute",
                     marginLeft: 1050,
                   }}
@@ -113,7 +113,7 @@ function HostFirst() {
                 <Grid
                   item
                   style={{
-                    marginTop: 300,
+                    marginTop: 260,
                     position: "absolute",
                     marginLeft: 1050,
                   }}
@@ -139,7 +139,7 @@ function HostFirst() {
                 <Grid
                   item
                   style={{
-                    marginTop: 400,
+                    marginTop: 360,
                     position: "absolute",
                     marginLeft: 1050,
                   }}
@@ -167,7 +167,7 @@ function HostFirst() {
                 <Grid
                   item
                   style={{
-                    marginTop: 500,
+                    marginTop: 460,
                     position: "absolute",
                     marginLeft: 1050,
                   }}
@@ -195,7 +195,7 @@ function HostFirst() {
                 <Grid
                   item
                   style={{
-                    marginTop: 600,
+                    marginTop: 560,
                     position: "absolute",
                     marginLeft: 1050,
                   }}
@@ -231,7 +231,7 @@ function HostFirst() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}

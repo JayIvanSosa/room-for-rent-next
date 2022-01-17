@@ -50,7 +50,7 @@ function HostFourth() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                p: 20,
+                p: 15,
                 m: 8,
                 bgcolor: "transparent",
               }}
@@ -85,7 +85,7 @@ function HostFourth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 400,
+                    marginTop: 360,
                     position: "absolute",
                     marginLeft: 1100,
                   }}
@@ -103,7 +103,7 @@ function HostFourth() {
                   <Button
                     variant="contained"
                     style={{
-                      marginTop: 500,
+                      marginTop: 460,
                       position: "absolute",
                       marginLeft: 1100,
                     }}
@@ -121,7 +121,7 @@ function HostFourth() {
                 <Grid
                   item
                   style={{
-                    marginTop: 800,
+                    marginTop: 760,
                     position: "absolute",
                     marginLeft: 400,
                   }}
