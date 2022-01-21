@@ -8,7 +8,8 @@ import Box from "@mui/material/Box";
 import FullWidthTabs from "./tabs";
 import ButtonBases from "./imgbtn";
 import useStyles from "../utils/style";
-import { Nav, Alert } from "components";
+import { Nav, Alert, Navigate } from "components";
+import { Button } from "@mui/material";
 
 export default Home;
 
@@ -16,7 +17,12 @@ function Home() {
   const classes = useStyles();
   return (
     <div>
-      <Nav />
+      {userService.userValue?.username === "ADMIN_ACCOUNT" ? (
+        <Nav />
+      ) : (
+        <Navigate />
+      )}
+
       <Alert />
       <div className="p-4">
         <Box sx={{ flexGrow: 1 }}>
@@ -25,9 +31,6 @@ function Home() {
               <div className="container" style={{ position: "absolute" }}>
                 <h1>Hi {userService.userValue?.firstName}!</h1>
                 <p>You&apos;re logged in Room For Rent!!</p>
-                <p>
-                  <Link href="/users">Manage Users</Link>
-                </p>
               </div>
             </Grid>
             <Grid item xs={8}>

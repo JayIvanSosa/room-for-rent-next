@@ -18,7 +18,11 @@ function Host() {
       <Head>
         <title>Try Hosting</title>
       </Head>
-      <AppBar position="absolute" className={classes.nav}>
+      <AppBar
+        position="absolute"
+        className={classes.nav}
+        style={{ backgroundColor: "black" }}
+      >
         <Toolbar className={classes.grow}>
           <NextLink href="/" passHref>
             <Link>
