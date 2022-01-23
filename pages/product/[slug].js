@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import data from "/components/data";
 import data from "../../components/data";
 import { Nav, Alert, Navigate } from "components";
@@ -19,8 +19,30 @@ import "react-date-range/dist/styles.css"; //main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { Box } from "@mui/system";
+import { PayPalButton } from "react-paypal-button-v2";
+
+//
 
 function ProductScreen() {
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+  //   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+  const addPaypalScript = () => {
+    if (window.paypal) {
+      setScriptLoaded(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src =
+      "https://www.paypal.com/sdk/js?client-id=AbwjXfD9ajWGges6cS5I8l6VQigkaad9neJdRScRIInTfXptWqRW_Z7P570NlgSuOMDkHb7r17T9P2kb";
+    script.type = "text/javascript";
+
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  };
+  useEffect(() => {
+    addPaypalScript();
+  }, []);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [noOfGuest, setNoOfGuest] = useState(1);
@@ -49,6 +71,8 @@ function ProductScreen() {
   const cleaningCost = round2(rentalCost * 0.05);
   const serviceFee = round2(rentalCost * 0.08);
   const totalPrice = round2(rentalCost + serviceFee + cleaningCost);
+  // eslint-disable-next-line @next/next/no-sync-scripts
+
   return (
     <div>
       <Nav title={product.name} />
@@ -184,6 +208,18 @@ function ProductScreen() {
                     Reserve Now
                   </Button>
                 </NextLink>
+              </ListItem>
+              <ListItem>
+                <div className={classes.fullWidth}>
+                  {scriptLoaded ? (
+                    <PayPalButton
+                      amount={totalPrice * 0.01}
+                      onSuccess={(details, data) => console.log(details)}
+                    />
+                  ) : (
+                    <span>loading...</span>
+                  )}
+                </div>
               </ListItem>
             </List>
           </Box>
