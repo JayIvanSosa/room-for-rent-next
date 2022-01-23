@@ -40,6 +40,26 @@ function HostEleventh() {
   );
   const { priceValue } = useSelector((state) => state.tenthpage);
 
+  const dataHandler = [
+    { firstpageValue },
+    { secondpageValue },
+    { thirdpageValue },
+    { locationValue },
+    { guestValue },
+    { bedsValue },
+    { bedroomsValue },
+    { bathroomsValue },
+    { amenitiesValue },
+    { favoritesValue },
+    { safetyitemsValue },
+    { imageValue },
+    { titleValue },
+    { descriptionValue },
+    { priceValue },
+  ];
+
+  console.log(dataHandler);
+
   return (
     <div>
       <Head>

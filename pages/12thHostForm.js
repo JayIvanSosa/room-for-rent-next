@@ -9,6 +9,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 
+import { useRouter } from "next/router";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import { Layout } from "components/account";
+import { userService, alertService } from "services";
+
 export default function App() {
   const { firstpageValue } = useSelector((state) => state.firstpage);
   const { secondpageValue } = useSelector((state) => state.secondpage);
@@ -30,15 +36,24 @@ export default function App() {
   );
   const { priceValue } = useSelector((state) => state.tenthpage);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-
+  const router = useRouter();
+  const formOptions = { resolver: yupResolver(validationSchema) };
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
   console.log(watch("example")); // watch input value by passing the name of it
+
+  function onSubmit(user) {
+    return userService
+      .register(user)
+      .then(() => {
+        alertService.success("Registration successful", {
+          keepAfterRouteChange: true,
+        });
+        router.push("login");
+        console.log(data);
+      })
+      .catch(alertService.error);
+  }
 
   return (
     <div>
@@ -123,25 +138,25 @@ export default function App() {
           <Grid item xs={6}>
             <Grid container spacing={3}>
               <Grid item xs={3}>
-                <div
-                  style={{
-                    display: "block",
-                    boxSizing: "border-box",
-                    width: "100%",
-                    borderRadius: "4px",
-                    border: "1px solid white",
-                    padding: " 10px 15px",
-                    marginBottom: "10p",
-                    fontSize: "14px",
-                  }}
-                >
+                <div>
                   <label>Guests:</label>
                   <input
+                    style={{
+                      display: "block",
+                      boxSizing: "border-box",
+                      width: "100%",
+                      borderRadius: "4px",
+                      border: "1px solid white",
+                      padding: " 10px 15px",
+                      marginBottom: "10p",
+                      fontSize: "14px",
+                    }}
                     defaultValue={guestValue}
                     {...register("5thPage1stBtnValue")}
                   />
                 </div>
               </Grid>
+
               <Grid item xs={3}>
                 <div>
                   <label>Beds:</label>
@@ -267,7 +282,7 @@ export default function App() {
                 marginBottom: "10p",
                 fontSize: "14px",
               }}
-              defaultValue={<img src={imageValue} />}
+              defaultValue={imageValue}
               {...register("7thPageValue")}
             />
           </Grid>
@@ -283,8 +298,22 @@ export default function App() {
                 marginBottom: "10p",
                 fontSize: "14px",
               }}
-              defaultValue={(latitudeValue, longitudeValue)}
-              {...register("8thPageValue")}
+              defaultValue={latitudeValue}
+              {...register("8thPageLatValue")}
+            />
+            <input
+              style={{
+                display: "block",
+                boxSizing: "border-box",
+                width: "100%",
+                borderRadius: "4px",
+                border: "1px solid white",
+                padding: " 10px 15px",
+                marginBottom: "10p",
+                fontSize: "14px",
+              }}
+              defaultValue={longitudeValue}
+              {...register("8thPageLongValue")}
             />
           </Grid>
         </Grid>
@@ -340,14 +369,6 @@ export default function App() {
           </Grid>
         </Grid>
 
-        {/* include validation with required or other standard HTML validation rules */}
-        <input {...register("exampleRequired", { required: true })} />
-        <input {...register("exampleeRequired", { required: true })} />
-        <input {...register("exampleeeRequired", { required: true })} />
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
-        {errors.exampleeRequired && <span>This field is requiredd</span>}
-        {errors.exampleeeRequired && <span>This field is requireddd</span>}
         <NextLink href="/11thHost" passHref>
           <Link>
             <Button
