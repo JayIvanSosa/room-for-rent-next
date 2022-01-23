@@ -203,11 +203,11 @@ function ProductScreen() {
                 </Grid>
               </ListItem>
               <ListItem>
-                <NextLink href={"/payment"}>
+                {/* <NextLink href={"/payment"}>
                   <Button fullWidth variant="contained" color="primary">
                     Reserve Now
                   </Button>
-                </NextLink>
+                </NextLink> */}
               </ListItem>
               <ListItem>
                 <div className={classes.fullWidth}>
