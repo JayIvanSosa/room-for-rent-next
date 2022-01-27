@@ -13,8 +13,8 @@ const edata = {
 
     {
       name: "3rd Home",
-      category: "eHomes",
       slug: "third-home",
+      category: "eHomes",
       image: "https://i.ibb.co/hsk9zPJ/ehomes3.jpg",
       pets: "Pets are not Allowed in this House",
       rating: 4.5,

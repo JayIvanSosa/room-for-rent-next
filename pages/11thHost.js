@@ -12,6 +12,8 @@ import ReactMapGL from "react-map-gl";
 
 import useStyles from "../utils/style";
 
+import firebase from "../firebase/firebase";
+
 function HostEleventh() {
   const classes = useStyles();
   const [viewport, setViewport] = useState({
@@ -59,6 +61,37 @@ function HostEleventh() {
   ];
 
   console.log(dataHandler);
+
+  const submitHandler = () => {
+    try {
+      firebase
+        .firestore()
+        .collection("tryHosting")
+        .doc("new_hosting")
+        .set({
+          unit: firstpageValue,
+          type: secondpageValue,
+          space: thirdpageValue,
+          location: locationValue,
+          guests: guestValue,
+          beds: bedsValue,
+          bedrooms: bedroomsValue,
+          bathrooms: bathroomsValue,
+          amenities: amenitiesValue,
+          favorites: favoritesValue,
+          safetyItems: safetyitemsValue,
+          image: imageValue,
+          title: titleValue,
+          description: descriptionValue,
+          price: priceValue,
+        })
+        .then(alert("Your rental place has been generated."));
+    } catch (error) {
+      console.log(error);
+      alert("Cannot Save Rental Place");
+    }
+  };
+  console.log(submitHandler);
 
   return (
     <div>
@@ -224,22 +257,19 @@ function HostEleventh() {
           marginLeft: 1400,
         }}
       >
-        <NextLink href="/12thHostForm" passHref>
-          <Link>
-            <Button
-              variant="contained"
-              style={{
-                fontSize: 17,
-                maxWidth: "150px",
-                maxHeight: "80px",
-                minWidth: "90px",
-                minHeight: "65px",
-              }}
-            >
-              Save
-            </Button>
-          </Link>
-        </NextLink>
+        <Button
+          variant="contained"
+          style={{
+            fontSize: 17,
+            maxWidth: "150px",
+            maxHeight: "80px",
+            minWidth: "90px",
+            minHeight: "65px",
+          }}
+          onClick={submitHandler}
+        >
+          Save
+        </Button>
       </Grid>
       <Grid
         item
