@@ -11,8 +11,8 @@ import { useSelector } from "react-redux";
 import ReactMapGL from "react-map-gl";
 
 import useStyles from "../utils/style";
-
-import firebase from "../firebase/firebase";
+import firebase from "firebase/compat/app";
+import { firestore } from "../lib/firebase";
 
 function HostEleventh() {
   const classes = useStyles();
@@ -62,7 +62,7 @@ function HostEleventh() {
 
   console.log(dataHandler);
 
-  const submitHandler = () => {
+  const sendData = () => {
     try {
       firebase
         .firestore()
@@ -91,7 +91,7 @@ function HostEleventh() {
       alert("Cannot Save Rental Place");
     }
   };
-  console.log(submitHandler);
+  console.log(sendData);
 
   return (
     <div>
@@ -266,7 +266,7 @@ function HostEleventh() {
             minWidth: "90px",
             minHeight: "65px",
           }}
-          onClick={submitHandler}
+          onClick={sendData}
         >
           Save
         </Button>

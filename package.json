@@ -22,7 +22,7 @@
         "bcryptjs": "^2.4.3",
         "date-fns": "^2.27.0",
         "express-jwt": "^6.1.0",
-        "firebase": "^9.6.2",
+        "firebase": "9.6.1",
         "firebase-admin": "^10.0.2",
         "firebase-tools": "^10.1.2",
         "js-cookie": "^3.0.1",
