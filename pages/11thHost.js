@@ -11,8 +11,12 @@ import { useSelector } from "react-redux";
 import ReactMapGL from "react-map-gl";
 
 import useStyles from "../utils/style";
+
+import { v4 as uuidv4, v4 } from "uuid";
 import firebase from "firebase/compat/app";
 import { firestore } from "../lib/firebase";
+
+//
 
 function HostEleventh() {
   const classes = useStyles();
@@ -63,11 +67,12 @@ function HostEleventh() {
   console.log(dataHandler);
 
   const sendData = () => {
+    // var houseId = v4();
     try {
       firebase
         .firestore()
         .collection("tryHosting")
-        .doc("new_hosting")
+        .doc("houseId")
         .set({
           unit: firstpageValue,
           type: secondpageValue,
