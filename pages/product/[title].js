@@ -20,10 +20,26 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { Box } from "@mui/system";
 import { PayPalButton } from "react-paypal-button-v2";
+import "firebase/compat/firestore";
+import firebase from "firebase/compat/app";
+import { firestore, postToJSON } from "../../lib/firebase";
+import { v4 as uuidv4, v4 } from "uuid";
 
 //
+export async function getServerSideProps() {
+  const postsQuery = firestore.collectionGroup("tryHosting");
+  // .where('published', '==', true)
+  // .orderBy('createdAt', 'desc')
+  // .limit(LIMIT);
 
-function ProductScreen() {
+  const posts = (await postsQuery.get()).docs.map(postToJSON);
+
+  return {
+    props: { posts }, // will be passed to the page component as props
+  };
+}
+
+function ProductScreen(props) {
   const [scriptLoaded, setScriptLoaded] = useState(false);
   //   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
   const addPaypalScript = () => {
@@ -61,8 +77,16 @@ function ProductScreen() {
 
   const classes = useStyles();
   const router = useRouter();
-  const { slug } = router.query;
-  const product = data.eHomes.find((a) => a.slug === slug);
+
+  const [posts, setPosts] = useState(props.posts);
+
+  const host = posts.filter((tryHosting) => {
+    return tryHosting;
+  });
+
+  const { title } = router.query;
+  const product = host.find((a) => a.title === title);
+
   if (!product) {
     return <div> This Place is no Longer Available</div>;
   }
@@ -73,22 +97,44 @@ function ProductScreen() {
   const totalPrice = round2(rentalCost + serviceFee + cleaningCost);
   // eslint-disable-next-line @next/next/no-sync-scripts
 
+  // const generateReport = () => {
+  //   // var reportId = v4();
+  //   try {
+  //     firestore
+  //       .collection("reports")
+  //       .doc("reportId")
+  //       .set({
+  //         place: product.title,
+  //         location: product.location,
+  //         rentalCost: rentalCost,
+  //         cleaningCost: cleaningCost,
+  //         serviceFee: serviceFee,
+  //         totalPrice: totalPrice,
+  //       })
+  //       .then(alert("Your reciept has been generated."));
+  //   } catch (error) {
+  //     console.log(error);
+  //     alert("Failed to rent this place.");
+  //   }
+  // };
+  // console.log(generateReport);
+
   return (
     <div>
-      <Nav title={product.name} />
+      <Nav title={product.title} />
       <div className={classes.section}>
         <NextLink href="/lobby" passHref>
           <Link>Back To Lobby</Link>
         </NextLink>
       </div>
       <Typography variant="h4" textAlign={"center"} marginBottom={3}>
-        {product.name}
+        {product.title}
       </Typography>
       <Grid container spacing={1} marginLeft={3}>
         <Grid item md={4} xs={12}>
           <Image
             src={product.image}
-            alt={product.name}
+            alt={product.title}
             width={640}
             height={640}
             Layout="responsive"
@@ -107,13 +153,31 @@ function ProductScreen() {
         <Grid item md={2.5} xs={10}>
           <List>
             <ListItem>
-              <Typography>Category: {product.category}</Typography>
+              <Typography>Type: {product.type}</Typography>
             </ListItem>
             <ListItem>
-              <Typography>Pets: {product.pets} </Typography>
+              <Typography>Unit: {product.unit}</Typography>
             </ListItem>
             <ListItem>
-              <Typography>Rating: {product.rating}</Typography>
+              <Typography>Location: {product.location}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Bedrooms: {product.bedrooms} </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Bathrooms: {product.bathrooms} </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Amenities: {product.amenities} </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Space: {product.space} </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Safety Items: {product.safetyItems} </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Favorites: {product.favorites}</Typography>
             </ListItem>
             <ListItem>
               <Typography>Description:{product.description}</Typography>
@@ -209,6 +273,9 @@ function ProductScreen() {
                   </Button>
                 </NextLink> */}
               </ListItem>
+              {/* <ListItem>
+                <Button onclick={generateReport}>Generate Report</Button>
+              </ListItem> */}
               <ListItem>
                 <div className={classes.fullWidth}>
                   {scriptLoaded ? (

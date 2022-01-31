@@ -16,5 +16,14 @@
         "id": 5,
         "dateCreated": "2022-01-21T13:25:10.809Z",
         "dateUpdated": "2022-01-21T13:25:10.809Z"
+    },
+    {
+        "firstName": "denzel",
+        "lastName": "manangu",
+        "username": "dmanangu",
+        "hash": "$2a$10$ePOvZNBK2kLVi4bx2WyHd.aYdC9dfeAflEM5vWvcBfORqUbpa.5oC",
+        "id": 6,
+        "dateCreated": "2022-01-31T02:17:29.731Z",
+        "dateUpdated": "2022-01-31T02:17:29.731Z"
     }
 ]

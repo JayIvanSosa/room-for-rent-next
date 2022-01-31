@@ -52,12 +52,11 @@ function Lobby(props) {
         Available Homes
       </Typography>
       <div className={classes.centerCards}>
-        <Products />
         <Grid container spacing={5} margin={1}>
           {host.map((product) => (
-            <Grid item md={3.5} key={product.name}>
+            <Grid item md={3.5} key={product.title}>
               <Card>
-                <NextLink href={`/product/${product.slug}`} passHref>
+                <NextLink href={`/product/${product.title}`} passHref>
                   <CardActionArea>
                     <CardMedia
                       component="img"
