@@ -37,6 +37,7 @@ const edata = {
       image: "https://i.ibb.co/kcPtkdr/p1.jpg",
       rating: 4.8,
       description: "A cozy and wonderful home for you and your pets",
+      price: 9000,
     },
     {
       name: "2nd Home Allowing Pets",
@@ -44,6 +45,7 @@ const edata = {
       image: "https://i.ibb.co/c1SdWKj/p2.jpg",
       rating: 4.8,
       description: "A cozy and wonderful home for you and your pets",
+      price: 7000,
     },
     {
       name: "3rd Home Allowing Pets",
@@ -51,6 +53,7 @@ const edata = {
       image: "https://i.ibb.co/TkghsCq/p3.jpg",
       rating: 4.8,
       description: "A cozy and wonderful home for you and your pets",
+      price: 10000,
     },
     {
       name: "1st Unique Places to Stay",
@@ -58,6 +61,7 @@ const edata = {
       image: "https://i.ibb.co/HrMqfZ1/uplace1.jpg",
       rating: 4.4,
       description: "A unique and one of a kind place to stay",
+      price: 14000,
     },
     {
       name: "2nd Unique Places to Stay",
@@ -65,6 +69,7 @@ const edata = {
       image: "https://i.ibb.co/yWFrWWD/uplace2.jpg",
       rating: 4.4,
       description: "A unique and one of a kind place to stay",
+      price: 16000,
     },
     {
       name: "3rd Unique Places to Stay",
@@ -72,6 +77,7 @@ const edata = {
       image: "https://i.ibb.co/bdYQjPj/uplace3.jpg",
       rating: 4.4,
       description: "A unique and one of a kind place to stay",
+      price: 5000,
     },
   ],
 };
