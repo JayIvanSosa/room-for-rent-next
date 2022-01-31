@@ -66,13 +66,20 @@ function HostEleventh() {
 
   console.log(dataHandler);
 
-  const sendData = () => {
-    // var houseId = v4();
+  const submitHandler = async () => {
+    var hostingId = v4();
+    console.log("AAAAAAAAAAAAAAAAAA");
+    console.log(hostingId);
+    console.log("AAAAAAAAAAAAAAAAAA");
+
     try {
-      firebase
-        .firestore()
+      console.log("AAAAAAAAAAAAAAAAAA");
+      console.log(hostingId);
+      console.log("AAAAAAAAAAAAAAAAAA");
+
+      firestore
         .collection("tryHosting")
-        .doc("houseId")
+        .doc(hostingId)
         .set({
           unit: firstpageValue,
           type: secondpageValue,
@@ -96,7 +103,6 @@ function HostEleventh() {
       alert("Cannot Save Rental Place");
     }
   };
-  console.log(sendData);
 
   return (
     <div>
@@ -262,20 +268,25 @@ function HostEleventh() {
           marginLeft: 1400,
         }}
       >
-        <Button
-          variant="contained"
-          style={{
-            fontSize: 17,
-            maxWidth: "150px",
-            maxHeight: "80px",
-            minWidth: "90px",
-            minHeight: "65px",
-          }}
-          onClick={sendData}
-        >
-          Save
-        </Button>
+        <NextLink href="/" passHref>
+          <Link>
+            <Button
+              variant="contained"
+              style={{
+                fontSize: 17,
+                maxWidth: "150px",
+                maxHeight: "80px",
+                minWidth: "90px",
+                minHeight: "65px",
+              }}
+              onClick={submitHandler}
+            >
+              Save
+            </Button>
+          </Link>
+        </NextLink>
       </Grid>
+
       <Grid
         item
         style={{
