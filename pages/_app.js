@@ -1,77 +1,39 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-
-import "styles/globals.css";
-
-import { userService } from "services";
-import { Nav, Alert } from "components";
-
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
+// import bgImage from "../public/images.jpg";
+import Image from "next/image";
+import "../styles/globals.css";
+import { useUserData } from "../lib/hooks";
+import { UserContext } from "../lib/context";
 
 export default App;
 
+// <Image
+// alt="background"
+// src="/images.jpg"
+// layout="fill"
+// objectFit="cover"
+// quality={100}
+// />
+
 function App({ Component, pageProps }) {
-  const router = useRouter();
-  const [user, setUser] = useState(null);
-  const [authorized, setAuthorized] = useState(false);
+  const userData = useUserData();
 
   useEffect(() => {
-    // on initial load - run auth check
-    authCheck(router.asPath);
-
-    // on route change start - hide page content by setting authorized to false
-    const hideContent = () => setAuthorized(false);
-    router.events.on("routeChangeStart", hideContent);
-
-    // on route change complete - run auth check
-    router.events.on("routeChangeComplete", authCheck);
-
-    // unsubscribe from events in useEffect return function
-    return () => {
-      router.events.off("routeChangeStart", hideContent);
-      router.events.off("routeChangeComplete", authCheck);
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  function authCheck(url) {
-    // redirect to login page if accessing a private page and not logged in
-    setUser(userService.userValue);
-    const publicPaths = ["/account/login", "/account/register"];
-    const path = url.split("?")[0];
-    if (!userService.userValue && !publicPaths.includes(path)) {
-      setAuthorized(false);
-      router.push({
-        pathname: "/account/login",
-        query: { returnUrl: router.asPath },
-      });
-    } else {
-      setAuthorized(true);
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
     }
-  }
-
+  }, []);
   return (
-    <>
-      <Provider store={store}>
-        <Head>
-          <title>Room For Rent</title>
-
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link
-            href="//netdna.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-            rel="stylesheet"
-          />
-        </Head>
-
-        <div className={`app-container ${user ? "bg-light" : ""}`}>
-          {authorized && <Component {...pageProps} />}
-        </div>
-
-        {/* credits */}
-      </Provider>
-    </>
+    <div>
+      <UserContext.Provider value={userData}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </UserContext.Provider>
+    </div>
   );
 }

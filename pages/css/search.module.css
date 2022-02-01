@@ -1,0 +1,12 @@
+.searchContainer {
+  position: center;
+  text-align: center;
+  margin-top: 20px;
+
+  border-radius: 50;
+}
+.search {
+  padding: 10px;
+  width: 40vw;
+  font-size: 20px;
+}

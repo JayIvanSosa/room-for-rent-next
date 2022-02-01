@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Grid,
   Card,
@@ -8,49 +8,84 @@ import {
   Typography,
   CardActions,
 } from "@mui/material";
-import Products from "../components/Products";
-// import Products from "../component/Products";
+import Box from "@mui/material/Box";
+import FullWidthTabs from "./tabs";
+import ButtonBases from "./imgbtn";
 import useStyles from "../utils/style";
+import Layout from "../components/Layout";
+import { Button } from "@mui/material";
+import { useRouter } from "next/router";
 import NextLink from "next/link";
-import { Nav, Alert } from "components";
 
 import "firebase/compat/firestore";
 import firebase from "firebase/compat/app";
 import { firestore, postToJSON } from "../lib/firebase";
+import searchStyles from "./css/search.module.css";
+import { UserContext } from "../lib/context";
+import Cookies from "js-cookie";
 
 export async function getServerSideProps() {
   const postsQuery = firestore.collectionGroup("tryHosting");
   // .where('published', '==', true)
   // .orderBy('createdAt', 'desc')
   // .limit(LIMIT);
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-  console.log(postsQuery);
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-  const posts = (await postsQuery.get()).docs.map(postToJSON);
 
-  console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-  console.log(posts);
-  console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+  const posts = (await postsQuery.get()).docs.map(postToJSON);
 
   return {
     props: { posts }, // will be passed to the page component as props
   };
 }
 
+export default Lobby;
+
 function Lobby(props) {
   const classes = useStyles();
+  const { user } = useContext(UserContext);
+  Cookies.set(user);
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     alert("No user detected please login first");
+  //     router.push("/");
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
   const [posts, setPosts] = useState(props.posts);
 
   const host = posts.filter((tryHosting) => {
     return tryHosting;
   });
+  const [filteredPosts] = useState(props.posts);
+
+  const clientSearchHandler = (e) => {
+    if (e.target.value.length >= 0 && e.target.value === "") {
+      setPosts(filteredPosts);
+    } else {
+      const filter = host.filter((tryHosting) => {
+        return tryHosting.location.toLowerCase().includes(e.target.value);
+      });
+      setPosts(filter);
+    }
+  };
   return (
-    <div>
-      <Nav />
-      <Alert />
-      <Typography variant="h4" className={classes.footer} marginTop={3}>
-        Available Homes
-      </Typography>
+    <Layout>
+      <div className={searchStyles.searchContainer}>
+        <input
+          type="search"
+          className={searchStyles.search}
+          placeholder="Search your desired location here: ex bulacan"
+          value={host.location}
+          onChange={clientSearchHandler}
+        />
+      </div>
+      <div style={{ marginTop: 30 }}>
+        <Typography variant="h4" className={classes.footer} marginTop={20}>
+          Available Homes
+        </Typography>
+      </div>
       <div className={classes.centerCards}>
         <Grid container spacing={5} margin={1}>
           {host.map((product) => (
@@ -88,11 +123,6 @@ function Lobby(props) {
           ))}
         </Grid>
       </div>
-
-      <footer className={classes.footer} style={{ marginTop: "30vh" }}>
-        <Typography>All rights reserved. Room For Rent 2021-2022</Typography>
-      </footer>
-    </div>
+    </Layout>
   );
 }
-export default Lobby;

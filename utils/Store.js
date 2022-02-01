@@ -18,12 +18,12 @@ function reducer(state, action) {
     }
 
     case "USER_LOGIN":
-      return { ...state, userInfo: action.payload };
+      return { ...state, user: action.payload };
 
     case "USER_LOGOUT":
       return {
         ...state,
-        userInfo: null,
+        user: null,
       };
     default:
       return state;

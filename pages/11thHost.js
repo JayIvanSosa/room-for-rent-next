@@ -14,7 +14,7 @@ import useStyles from "../utils/style";
 
 import { v4 as uuidv4, v4 } from "uuid";
 import firebase from "firebase/compat/app";
-import { firestore } from "../lib/firebase";
+import { auth, firestore, postToJSON } from "../lib/firebase";
 
 //
 
@@ -96,6 +96,7 @@ function HostEleventh() {
           title: titleValue,
           description: descriptionValue,
           price: priceValue,
+          user_Id: auth.currentUser.uid,
         })
         .then(alert("Your rental place has been generated."));
     } catch (error) {
@@ -268,7 +269,7 @@ function HostEleventh() {
           marginLeft: 1400,
         }}
       >
-        <NextLink href="/" passHref>
+        <NextLink href="/lobby" passHref>
           <Link>
             <Button
               variant="contained"

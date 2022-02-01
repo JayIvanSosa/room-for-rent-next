@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { Link, AppBar, Container, Toolbar, Typography } from "@mui/material";
 import NextLink from "next/Link";
@@ -8,10 +8,35 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import sideImage from "../public/images/image3.jpg";
-import { userService } from "services";
+import firebase from "firebase/compat/app";
+import { auth, firestore, postToJSON } from "../lib/firebase";
 
-function Host() {
+export async function getServerSideProps() {
+  const postsQuery = firestore.collectionGroup("users");
+  // .where('published', '==', true)
+  // .orderBy('createdAt', 'desc')
+  // .limit(LIMIT);
+
+  const posts = (await postsQuery.get()).docs.map(postToJSON);
+
+  return {
+    props: { posts }, // will be passed to the page component as props
+  };
+}
+
+function Host(props) {
   const classes = useStyles();
+  const [posts, setPosts] = useState(props.posts);
+
+  const hostName = posts.filter((users) => {
+    return users.id == auth.currentUser.uid;
+  });
+
+  // const profile = hostName.find((a) => a.name === hostName);
+
+  // if (!profile) {
+  //   return <div> There is no user </div>;
+  // }
 
   return (
     <div>
@@ -19,12 +44,12 @@ function Host() {
         <title>Try Hosting</title>
       </Head>
       <AppBar
-        position="absolute"
+        position="static"
         className={classes.nav}
         style={{ backgroundColor: "black" }}
       >
         <Toolbar className={classes.grow}>
-          <NextLink href="/" passHref>
+          <NextLink href="/lobby" passHref>
             <Link>
               <Typography className={classes.title}>Room For Rent</Typography>
             </Link>
@@ -54,7 +79,7 @@ function Host() {
                 item
                 style={{ color: "White", fontSize: 50, fontWeight: 600 }}
               >
-                <h1>Hi {userService.userValue?.firstName}!</h1>
+                <h1>Hi {hostName[0].name} </h1>
                 Hosting makes RoomforRent, RoomforRent
               </Grid>
             </Box>
