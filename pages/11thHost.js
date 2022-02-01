@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { Link, Container, Typography } from '@mui/material';
-import NextLink from 'next/Link';
+import NextLink from 'next/link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
