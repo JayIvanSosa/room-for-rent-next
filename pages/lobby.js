@@ -81,7 +81,7 @@ function Lobby(props) {
           onChange={clientSearchHandler}
         />
       </div>
-      <div style={{ marginTop: 30 }}>
+      <div style={{ marginTop: 10 }}>
         <Typography variant="h4" className={classes.footer} marginTop={20}>
           Available Homes
         </Typography>
