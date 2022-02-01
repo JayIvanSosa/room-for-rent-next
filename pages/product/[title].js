@@ -79,6 +79,9 @@ function ProductScreen(props) {
     key: "selection",
   };
 
+  const ssDate = startDate.toString();
+  const eeDate = endDate.toString();
+
   const classes = useStyles();
   const router = useRouter();
 
@@ -125,8 +128,8 @@ function ProductScreen(props) {
           place: rentalPlace,
           location: rentalLocation,
           unit: rentalUnit,
-          sDate: startDate,
-          eDate: endDate,
+          sDate: ssDate,
+          eDate: eeDate,
           user_name: userName,
           phoneNum: userNum,
           ttlDays: noOfDays,

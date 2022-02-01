@@ -22,10 +22,6 @@ export async function getServerSideProps() {
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
 
-  //   console.log("AAAAAAAAAAAAAAAAAAAa");
-  //   console.log(posts);
-  //   console.log("AAAAAAAAAAAAAAAAAAAa");
-
   return {
     props: { posts }, // will be passed to the page component as props
   };
@@ -40,7 +36,9 @@ export default function Rental(props) {
   const owner = posts.filter((payments) => {
     return payments;
   });
-
+  // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+  // console.log(owner);
+  // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
   return (
     <Layout>
       <div style={{ marginTop: 60 }}>
@@ -71,7 +69,12 @@ export default function Rental(props) {
               <TableCell>
                 <Typography>Number of Days</Typography>
               </TableCell>
-
+              <TableCell>
+                <Typography>Start Date</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography>End Date</Typography>
+              </TableCell>
               <TableCell align="right">
                 <Typography>Status</Typography>
               </TableCell>
@@ -106,6 +109,12 @@ export default function Rental(props) {
                 </TableCell>
                 <TableCell>
                   <Typography>{place.ttlDays}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{place.sDate}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>{place.eDate}</Typography>
                 </TableCell>
                 <TableCell align="right">
                   <Typography>{place.status}</Typography>
